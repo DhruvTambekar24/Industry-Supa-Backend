@@ -56,7 +56,9 @@ app.add_middleware(
 
 # Initialize the mentor AI with your API key
 MENTOR_AI = IndustryMentorAI(api_key=settings.gemini_api_key)
-
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
 @app.post("/get-mentor-response")
 async def get_mentor_response(mentor_query: MentorQuery):
     try:
